@@ -1,0 +1,11 @@
+[package]
+name = "rust-connect"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = "4.5.20"
+dotenv = "0.15.0"
+dotenv-linter = "3.3.0"
+dotenv-vault = "0.1.2"
+ssh-rs = "0.5.0"
