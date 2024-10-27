@@ -10,8 +10,8 @@ use std::io::prelude::*;
  *Universitat Potsdam
  *Date: 2024-10-28
  * A rustlang based dotenv reader and job submission scheduler for slurm job submissions.
- * Just specify the rsa file which should be the connect file for the slurm along with
- * y:our username and the password and the path on your computer for the submission script.
+ * give your IP address in the dot env and the username and the password as command line
+ * with the filename.
  *
  * It implements the Server host key algorithm
  *
@@ -21,8 +21,6 @@ use std::io::prelude::*;
 fn main() {
 
     let args:SlurmArgs = SlurmArgs::parse();
-     // reading the dotenv file and merging the same with the format! as the combined one for
-     // submission.
     let _  = dotenv_vault::dotenv();
     let ip = std::env::var("IP").unwrap_or("".to_string());
     let user = args.user_arg.to_string();
@@ -35,7 +33,7 @@ fn main() {
     sess.userauth_password(&user, &password).unwrap();
     assert!(sess.authenticated());
     let mut channel = sess.channel_session().unwrap();
-    channel.exec(&combined);
+    let _ = channel.exec(&combined);
     let mut s = String::new();
     channel.read_to_string(&mut s).unwrap();
     println!("{}", s);
