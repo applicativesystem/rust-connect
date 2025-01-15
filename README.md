@@ -3,6 +3,7 @@
 - a rustlang devops/system administration application for automatically submitting jobs to slurm schedulers. 
 - provide the pub file, username and the ipaddress and the script to be submitted to the cluster.
 - an implementation of the server key algorithm.
+- please see the last commit message and if it says compiled binary then it is completed or else still in development version.
 
 ```
 cargo build 
